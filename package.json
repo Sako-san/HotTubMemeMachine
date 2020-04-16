@@ -1,20 +1,20 @@
 {
-  "name": "test-q",
+  "name": "hot-tub-meme-machine",
   "version": "0.0.3",
   "description": "A Quasar Framework app",
-  "productName": "Quasar App",
+  "productName": "HotTubMemeMachine",
   "cordovaId": "org.cordova.quasar.app",
   "capacitorId": "",
-  "author": "renren1 <renren@ixbase.net>",
+  "author": "Tim Sakow",
   "private": true,
   "scripts": {
     "lint": "eslint --ext .js,.vue src",
     "test": "echo \"No test specified\" && exit 0"
   },
   "dependencies": {
-    "@quasar/extras": "^1.5.2",
+    "@quasar/extras": "^1.6.4",
     "axios": "0.19.0",
-    "quasar": "^1.9.3",
+    "quasar": "^1.9.15",
     "vee-validate": "2.2.13",
     "vue-content-loader": "0.2.2",
     "vue-i18n": "^8.0.0",
@@ -23,7 +23,7 @@
     "vuex-persistedstate": "2.5.4"
   },
   "devDependencies": {
-    "@quasar/app": "^1.5.8",
+    "@quasar/app": "^1.7.1",
     "@vue/eslint-config-standard": "^4.0.0",
     "babel-eslint": "^10.0.1",
     "copy-webpack-plugin": "^5.0.5",

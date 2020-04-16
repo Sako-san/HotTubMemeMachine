@@ -17,9 +17,6 @@ use Illuminate\Http\Request;
 //     return $request->user();
 // });
 
-Route::post('/upload1', 'UploadController@upload');
-Route::resource('upload', 'UploadController');
-
 Route::group(['middleware' => 'auth:api'], function () {
 
     Route::get('/user', function (Request $request) {
@@ -32,6 +29,9 @@ Route::group(['middleware' => 'auth:api'], function () {
     });
 
 });
+
+Route::get('/', 'blogPostController@index');
+Route::resource('blogPosts', 'blogPostController');
 
 Route::post('login', 'AuthController@login');
 Route::post('register', 'AuthController@register');

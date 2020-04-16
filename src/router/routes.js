@@ -3,84 +3,22 @@ import routeModules from 'features/routes-index.js'
 const routes = [
   {
     path: '/home',
-    component: () => import('layouts/MyLayout.vue'),
+    component: () => import('layouts/default.vue'),
     children: [
       {
         path: '',
         meta: {
-          title: 'Quasar v1 Samples',
           needAuth: true
         },
         component: () => import('pages/Index.vue')
-      }
-    ]
-  },
-  {
-    path: '/autocomplete',
-    meta: {
-      title: 'Autocomplete'
-    },
-    component: () => import('layouts/MyLayout.vue'),
-    children: [{ path: '', component: () => import('pages/AutocompleteSample/Autocomplete.vue') }]
-  },
-  {
-    path: '/component-samples',
-    component: () => import('layouts/MyLayout.vue'),
-    children: [{
-      path: '',
-      meta: {
-        title: 'Select Extension Sample'
       },
-      component: () => import('pages/ComponentSamples/SelectSample.vue')
-    }]
-  },
-
-  {
-    path: '/dialog-sample',
-
-    component: () => import('layouts/MyLayout.vue'),
-    children: [{
-      path: '',
-      meta: {
-        title: 'Form in Dialog sample'
-      },
-      component: () => import('pages/ComponentSamples/Samples.vue')
-    }]
-  },
-  {
-    path: '/form-validations',
-    component: () => import('layouts/MyLayout.vue'),
-    children: [
-      {
-        path: '',
-        meta: {
-          title: 'External Form Validationss'
-        },
-        components: {
-          default: () => import('pages/FormSamples/Index.vue'),
-          tabs: () => import('pages/FormSamples/FormTab.vue')
-        }
-      },
-      {
-        path: 'external-vuelidate',
-        meta: {
-          title: 'Vuelidate Sample'
-        },
-        components: {
-          default: () => import('pages/FormSamples/FormValidationSamples.vue'),
-          tabs: () => import('pages/FormSamples/FormTab.vue')
-        }
-      },
-      {
-        path: 'external-veevalidate',
-        meta: {
-          title: 'VeeValidate Sample'
-        },
-        components: {
-          default: () => import('pages/FormSamples/VeeValidateSample.vue'),
-          tabs: () => import('pages/FormSamples/FormTab.vue')
-        }
-      }
+      { path: '', component: () => import('pages/Index.vue') },
+      { path: '/timeTraveling', component: () => import('pages/htmm/timeTraveling.vue') },
+      { path: '/MemeOfTheDay', component: () => import('pages/htmm/memeOfTheDay.vue') },
+      { path: '/calendar', component: () => import('pages/htmm/calendar.vue') },
+      { path: '/legendary', component: () => import('pages/htmm/legendary.vue') },
+      { path: '/about', component: () => import('pages/htmm/about.vue') },
+      { path: '/createPost', component: () => import('pages/htmm/createPost.vue') }
     ]
   },
   // add other routes
