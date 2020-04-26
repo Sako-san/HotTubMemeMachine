@@ -32,8 +32,9 @@ const getters = {
 }
 
 // mutator, using helper
-const mutations = {
-}
+// const mutations = {
+//   updateBlogPosts ()
+// }
 
 export default {
   namespaced: true,

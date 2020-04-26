@@ -33,6 +33,8 @@ module.exports = {
 
   // add your custom rules here
   rules: {
+    "template-curly-spacing" : "off",
+    indent : "off",
     // allow async-await
     'generator-star-spacing': 'off',
     // allow paren-less arrow functions

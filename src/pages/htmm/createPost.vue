@@ -38,7 +38,7 @@
           </div>
       </div>
 
-      <div class="flex row justify-center q-ma-xl rounded-borders bg-primary">
+      <!-- <div class="flex row justify-center q-ma-xl rounded-borders bg-primary">
         <div class="flex column q-ma-lg">
         <h4 class="flex justify-center">Select a Meme</h4>
           <q-file
@@ -52,7 +52,7 @@
             <img style="width:200px; height:200px;" class="preview" src="picture" alt="meme for your viewing">
           </div>
         </div>
-      </div>
+      </div> -->
 
       <div class="flex row justify-center q-ma-xl rounded-borders bg-primary" >
         <div class="flex column q-ma-lg" style="min-width:80%">
@@ -70,7 +70,6 @@
 
       <div class="flex row justify-center">
           <q-btn
-            @click="createPost()"
             type="submit"
             label="Save"
             style="height: 50px; width:150px"
@@ -85,6 +84,7 @@
 
 <script>
 import { mapState } from 'vuex'
+import { axios } from 'boot/axios'
 
 export default {
   name: 'CreatePost',
@@ -92,8 +92,8 @@ export default {
     return {
       date: '',
       memeName: '',
-      imageData: null,
-      picture: null,
+      // imageData: null,
+      // picture: null,
       blogText: '',
       dogeRating: 0
     }
@@ -102,12 +102,19 @@ export default {
     ...mapState(['posts'])
   },
   methods: {
-    previewImage (e) {
-      this.picture = null
-      this.imageData = e.target.files[0]
-    },
-    createPost () {
+    // previewImage (e) {
+    //   this.picture = null
+    //   this.imageData = e.target.files[0]
+    // },
+    async createPost () {
+      const data = {
+        DateOfBirth: this.date,
+        Title: this.memeName,
+        BlogContent: this.blogText,
+        DogeRating: this.dogeRating
+      }
 
+      await axios.post('/blogPosts', data)
     },
     uploadFile () {
 

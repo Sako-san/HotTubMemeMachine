@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\blogPost;
-use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class blogPostController extends Controller
 {
@@ -39,8 +40,17 @@ class blogPostController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        return blogPost::create($request->all());
+        $path = $request->file('imgUrl')->store('imgFile', 's3');
+        
+        $post = blogPost::create([
+            'Title' => $request->Title,
+            'DateOfBirth' => $request->DateOfBirth,
+            'DogeRating' => $request->DogeRating,
+            'BlogContent' => $request->BlogContent,
+            'imUrl' => Storage::disk('s3')->url($path)
+        ]);
+
+        return $post;
     }
 
     /**
