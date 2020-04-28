@@ -13,10 +13,10 @@ const routes = [
         component: () => import('pages/Index.vue')
       },
       { path: '', component: () => import('pages/Index.vue') },
-      { path: '/timeTraveling', component: () => import('pages/htmm/timeTraveling.vue') },
-      { path: '/MemeOfTheDay', component: () => import('pages/htmm/memeOfTheDay.vue') },
-      { path: '/calendar', component: () => import('pages/htmm/calendar.vue') },
-      { path: '/legendary', component: () => import('pages/htmm/legendary.vue') },
+      // { path: '/timeTraveling', component: () => import('pages/htmm/timeTraveling.vue') },
+      // { path: '/MemeOfTheDay', component: () => import('pages/htmm/memeOfTheDay.vue') },
+      // { path: '/calendar', component: () => import('pages/htmm/calendar.vue') },
+      // { path: '/legendary', component: () => import('pages/htmm/legendary.vue') },
       { path: '/about', component: () => import('pages/htmm/about.vue') },
       { path: '/createPost', component: () => import('pages/htmm/createPost.vue') }
     ]

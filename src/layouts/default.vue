@@ -5,7 +5,6 @@
 
       <div class="row justify-around items-center q-ml-md" style="width:100%;">
         <div class="flex col-3 justify-center">
-            <q-btn dense flat round icon="menu" @click="left = !left" />
             <q-toolbar-title class="rounded-borders">
               <router-link to="/">
                 <q-img class="rounded-borders"  style="object-fit: cover; max-width:200px;" src="../assets/doge-boi.png"/>
@@ -13,12 +12,12 @@
             </q-toolbar-title>
         </div>
 
-        <div class="flex col-6 justify-center">
+        <div class="flex col-6 justify-between">
           <q-tabs>
-            <q-route-tab to="/timeTraveling" label="Memes of Past" />
+            <!-- <q-route-tab to="/timeTraveling" label="Memes of Past" />
             <q-route-tab to="/MemeOfTheDay" label="Meme of the Day" />
             <q-route-tab to="/calendar" label="Meme Calendar" />
-            <q-route-tab to="/legendary" label="Legendary Memes" />
+            <q-route-tab to="/legendary" label="Legendary Memes" /> -->
             <q-route-tab to="/about" label="About HTMM" />
           </q-tabs>
         </div>
@@ -33,76 +32,6 @@
 
     </q-header>
 
-    <q-drawer content-class="bg-primary text-secondary" v-model="left" side="left" bordered>
-    <q-list class="flex justify-center">
-        <h6>Top 5 All Time</h6>
-
-        <div class="justify-start">
-          <q-item clickable v-ripple>
-            <q-item-section avatar>
-              <q-avatar square>
-                <img style="object-fit: cover;" src="../assets/surprised-pikachu-meme.png">
-              </q-avatar>
-            </q-item-section>
-
-            <q-item-section>Surprised Pikachu</q-item-section>
-          </q-item>
-
-          <q-item clickable v-ripple>
-            <q-item-section avatar>
-              <q-avatar square>
-                <img style="object-fit: cover;" src="../assets/Good-Guy-Greg.jpg">
-              </q-avatar>
-            </q-item-section>
-
-            <q-item-section>Good Guy Greg</q-item-section>
-          </q-item>
-
-          <q-item clickable v-ripple>
-            <q-item-section avatar>
-              <q-avatar square>
-                <img style="object-fit: cover;" src="../assets/squinting-fry.png">
-              </q-avatar>
-            </q-item-section>
-
-            <q-item-section>Squinting Fry</q-item-section>
-          </q-item>
-
-          <q-item clickable v-ripple>
-            <q-item-section avatar>
-              <q-avatar square>
-                <img style="object-fit: cover;" src="../assets/crying-jordan.jpeg">
-              </q-avatar>
-            </q-item-section>
-
-            <q-item-section>Crying Jordan</q-item-section>
-          </q-item>
-
-          <q-item clickable v-ripple>
-            <q-item-section avatar>
-              <q-avatar square>
-                <img style="object-fit: cover;" src="../assets/mocking-bob.jpeg">
-              </q-avatar>
-            </q-item-section>
-
-            <q-item-section>Mocking SpongeBob</q-item-section>
-          </q-item>
-        </div>
-      </q-list>
-
-      <q-separator class="q-ma-lg" color="secondary" inset/>
-
-      <div class="flex justify-center">
-          <div>
-            <h6>Editor Tools</h6>
-            <router-link style="text-decoration:none;" class="text-secondary" to='/createPost' >
-                  <q-icon size="35px" class="material-icons" name="create"/>
-                  <span class="q-ml-md">Create Post</span>
-            </router-link>
-          </div>
-       </div>
-    </q-drawer>
-
     <q-page-container>
       <router-view />
     </q-page-container>
@@ -114,7 +43,13 @@
                 <img src="../assets/doge_icon.png">
               </q-avatar>
             </a>
-          <span>Hot Tub Meme Machine - Chronocling the Memes of Our Time</span>
+            <div class="row">
+              <span class="q-mr-xl">Hot Tub Meme Machine - Chronocling the Memes of Our Time</span>
+
+              <router-link style="text-decoration:none;" class="q-ma-md fixed-bottom-right" to='/createPost' >
+              <q-btn style="font-family: Roboto;" class="material-icons" icon="create" label="Create Post" flat/>
+              </router-link>
+            </div>
       </q-toolbar>
     </q-footer>
 
