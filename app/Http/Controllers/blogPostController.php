@@ -40,14 +40,14 @@ class blogPostController extends Controller
      */
     public function store(Request $request)
     {
-        $path = $request->file('imgUrl')->store('imgFile', 's3');
+        // $path = $request->file('imgUrl')->store('imgFile', 's3');
         
         $post = blogPost::create([
             'Title' => $request->Title,
             'DateOfBirth' => $request->DateOfBirth,
             'DogeRating' => $request->DogeRating,
             'BlogContent' => $request->BlogContent,
-            'imUrl' => Storage::disk('s3')->url($path)
+            // 'imUrl' => Storage::disk('s3')->url($path)
         ]);
 
         return $post;
