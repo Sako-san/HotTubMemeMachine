@@ -28,6 +28,9 @@ Route::group(['middleware' => 'auth:api'], function () {
             ['data' => 'Test api response']);
     });
 
+    Route::middleware('auth:api')->group(function () {
+        Route::get('/logout', 'Api\AuthController@logout')->name('logout');
+    });
 });
 
 Route::get('/', 'blogPostController@index');

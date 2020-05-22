@@ -46,4 +46,15 @@ class AuthController extends Controller
         $success['name'] = $user->name;return response()->success('Registration successfull.', $success, 200);
 
     }
+
+
+    public function logout (Request $request) {
+
+        $token = $request->user()->token();
+        $token->revoke();
+
+        $response = 'You have been succesfully logged out!';
+        return response($response, 200);
+
+    }
 }

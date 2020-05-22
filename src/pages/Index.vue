@@ -1,5 +1,5 @@
 <template>
-  <q-page class="flex flex-center">
+  <q-page class="doge flex flex-center">
     <div
       style="width: 100%;"
       class="q-my-xl column justify-center"
@@ -32,9 +32,7 @@ export default {
 }
 </script>
 <style>
-  .bg {
-    width: 100%;
-    height: 100%;
-    background-image: url(/Users/timothysakow/Desktop/HotTubMemeMachine/src/assets/doge_icon.png);
+  .doge {
+    background-image: url("../assets/doge_50_opacity.png")
   }
 </style>

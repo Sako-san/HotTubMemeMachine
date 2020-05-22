@@ -54,19 +54,98 @@
         </div>
       </div> -->
 
-      <div class="flex row justify-center q-ma-xl rounded-borders bg-primary" >
-        <div class="flex column q-ma-lg" style="min-width:80%">
-            <h4 class="flex justify-center">Blog Content</h4>
-            <q-input
-              v-model="blogText"
-              autogrow
-              label="Write your blog here dawg"
-              filled
-              style="min-width: 80%"
-              type="textarea"
-            />
-        </div>
-      </div>
+  <div class="q-ma-xl q-pa-md q-gutter-sm">
+    <q-editor
+      v-model="blogText"
+      :definitions="definitions"
+      :dense="$q.screen.lt.md"
+      :toolbar="[
+        [
+          {
+            label: $q.lang.editor.align,
+            icon: $q.iconSet.editor.align,
+            fixedLabel: true,
+            list: 'only-icons',
+            options: ['left', 'center', 'right', 'justify']
+          },
+          {
+            label: $q.lang.editor.align,
+            icon: $q.iconSet.editor.align,
+            fixedLabel: true,
+            options: ['left', 'center', 'right', 'justify']
+          }
+        ],
+        ['bold', 'italic', 'strike', 'underline', 'subscript', 'superscript'],
+        ['token', 'hr', 'link', 'custom_btn'],
+        ['print', 'fullscreen'],
+        [
+          {
+            label: $q.lang.editor.formatting,
+            icon: $q.iconSet.editor.formatting,
+            list: 'no-icons',
+            options: [
+              'p',
+              'h1',
+              'h2',
+              'h3',
+              'h4',
+              'h5',
+              'h6',
+              'code'
+            ]
+          },
+          {
+            label: $q.lang.editor.fontSize,
+            icon: $q.iconSet.editor.fontSize,
+            fixedLabel: true,
+            fixedIcon: true,
+            list: 'no-icons',
+            options: [
+              'size-1',
+              'size-2',
+              'size-3',
+              'size-4',
+              'size-5',
+              'size-6',
+              'size-7'
+            ]
+          },
+          {
+            label: $q.lang.editor.defaultFont,
+            icon: $q.iconSet.editor.font,
+            fixedIcon: true,
+            list: 'no-icons',
+            options: [
+              'default_font',
+              'arial',
+              'arial_black',
+              'comic_sans',
+              'courier_new',
+              'impact',
+              'lucida_grande',
+              'times_new_roman',
+              'verdana'
+            ]
+          },
+          'removeFormat'
+        ],
+        ['quote', 'unordered', 'ordered', 'outdent', 'indent'],
+
+        ['undo', 'redo'],
+        ['viewsource']
+      ]"
+      :fonts="{
+        arial: 'Arial',
+        arial_black: 'Arial Black',
+        comic_sans: 'Comic Sans MS',
+        courier_new: 'Courier New',
+        impact: 'Impact',
+        lucida_grande: 'Lucida Grande',
+        times_new_roman: 'Times New Roman',
+        verdana: 'Verdana'
+      }"
+    />
+    </div>
 
       <div class="flex row justify-center">
           <q-btn
@@ -90,6 +169,13 @@ export default {
   name: 'CreatePost',
   data () {
     return {
+      definitions: {
+          insert_img: {
+          tip: 'Insertar Imagen',
+          icon: 'photo',
+          handler: this.insertImg // handler will call insertImg() method
+          }
+      },
       date: '',
       memeName: '',
       // imageData: null,
@@ -102,10 +188,29 @@ export default {
     ...mapState(['posts'])
   },
   methods: {
-    // previewImage (e) {
-    //   this.picture = null
-    //   this.imageData = e.target.files[0]
-    // },
+            insertImg () { // insertImg method
+            // create an input file element to open file dialog
+            const input = document.createElement('input')
+            input.type = 'file'
+            input.accept = '.png, .jpg' // file extensions allowed
+            let file
+            input.onchange = _ => {
+                const files = Array.from(input.files)
+                file = files[0]
+
+               // lets load the file as dataUrl
+                const reader = new FileReader()
+                let dataUrl = ''
+                reader.onloadend = function () {
+                    dataUrl = reader.result
+
+                    // append result to the body of your post
+                document.execCommand('insertHTML', true, '<div><img src="' + dataUrl + '" /></div>')
+                }
+                reader.readAsDataURL(file)
+            }
+            input.click()
+        },
     async createPost () {
       const data = {
         DateOfBirth: this.date,
