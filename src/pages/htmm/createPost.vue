@@ -1,25 +1,25 @@
 <template>
-  <q-page class="flex justify-center text-black">
-  <h4 class="justify-center q-m-none" style="max-height: 100px;">Create Post</h4>
+  <q-page>
+  <h4 class="title">Create Post</h4>
 
-  <div class="flex column q-py-xl" style="width:100%;" >
+  <div class="content-container">
 
-    <q-form class="col-10"
+    <q-form
       @submit="onSubmit"
       @reset="onReset">
 
       <div class="flex row justify-around q-mb-xl">
-        <div class="column rounded-borders bg-primary">
+        <div class="calendar column rounded-borders bg-primary">
           <h5 class="flex justify-center">Select a Date</h5>
           <q-date
-            class="q-ma-lg"
+            class="date-select"
             color="secondary"
             v-model="date"
             label="Select Date"
             landscape/>
         </div>
 
-          <div class="column justify-around rounded-borders bg-primary">
+          <div class="content-title rounded-borders bg-primary">
             <div class="q-ma-md">
               <h5 class="flex justify-center q-mb-sm">Name the Meme</h5>
               <q-input
@@ -38,25 +38,10 @@
           </div>
       </div>
 
-      <!-- <div class="flex row justify-center q-ma-xl rounded-borders bg-primary">
-        <div class="flex column q-ma-lg">
-        <h4 class="flex justify-center">Select a Meme</h4>
-          <q-file
-            v-model="imageData"
-            @change="previewImage"
-            label="Pick a meme dawg"
-            filled
-            style="max-width: 300px"
-          />
-          <div v-if="imageData != null">
-            <img style="width:200px; height:200px;" class="preview" src="picture" alt="meme for your viewing">
-          </div>
-        </div>
-      </div> -->
-
   <div class="q-ma-xl q-pa-md q-gutter-sm">
     <q-editor
       v-model="blogText"
+      class="editor"
       :definitions="definitions"
       :dense="$q.screen.lt.md"
       :toolbar="[
@@ -241,3 +226,148 @@ export default {
   }
 }
 </script>
+<style lang="stylus">
+@media screen and (max-width: 580px) {
+  .title {
+   display: flex;
+   justify-content: center;
+   margin-bottom: 24px;
+  }
+
+  .content-container {
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .content-title {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    width: 80%;
+  }
+
+  .calendar {
+    margin: 0 auto;
+    width: 80%;
+    padding-bottom: 12px;
+    margin-bottom: 12px;
+  }
+
+  .editor {
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .date-select {
+    width: 50%;
+  }
+}
+
+@media screen and (max-width: 780px) {
+  .title {
+   display: flex;
+   justify-content: center;
+   margin-bottom: 24px;
+  }
+
+  .content-container {
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .content-title {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    width: 80%;
+  }
+
+  .calendar {
+    width: 80%;
+    padding-bottom: 12px;
+    margin-bottom: 12px;
+  }
+
+  .editor {
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .date-select {
+    margin: 0 auto;
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .title {
+   display: flex;
+   justify-content: center;
+   margin-bottom: 24px;
+  }
+
+  .content-container {
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .content-title {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    width: 80%;
+  }
+
+  .calendar {
+    width: 80%;
+    padding-bottom: 12px;
+    margin-bottom: 12px;
+  }
+
+  .editor {
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .date-select {
+    margin: 0 auto;
+    width: 70%;
+  }
+}
+
+@media screen and (min-width: 1025px) {
+  .title {
+   display: flex;
+   justify-content: center;
+   margin-bottom: 24px;
+  }
+
+  .content-container {
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .content-title {
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+    width: 80%;
+  }
+
+  .calendar {
+    width: 80%;
+    padding-bottom: 12px;
+    margin-bottom: 12px;
+  }
+
+  .editor {
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .date-select {
+    margin: 0 auto;
+    width: 50%;
+  }
+}
+</style>

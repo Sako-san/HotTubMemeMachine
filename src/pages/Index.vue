@@ -27,12 +27,14 @@ export default {
   async mounted () {
     const { data } = await this.$axios.get('/')
     console.log(data)
-    this.posts = data
+    this.posts = data.reverse()
   }
 }
 </script>
 <style>
   .doge {
-    background-image: url("../assets/doge_50_opacity.png")
+    height: 100%;
+    background-image: url("../assets/doge_50_opacity.png");
+    background-attachment: fixed;
   }
 </style>

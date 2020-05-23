@@ -2,8 +2,8 @@
   <q-page class="flex-center text-black">
     <div class="column text-center" width="100%">
       <div class='title'>
-        <h1>Hot Tub</h1>
-        <h1>Meme Machine</h1>
+        <div>Hot Tub</div>
+        <div>Meme Machine</div>
       </div>
     </div>
     <div class="content">
@@ -56,17 +56,84 @@ export default {
 }
 </script>
 <style lang="stylus">
-  .title {
-    margin: auto;
-    margin-top: 75px;
-    width: 85%;
-  }
-  .content {
-    display: flex;
-    margin: auto;
-    margin-bottom: 75px;
-    flex-direction: column;
-    justify-content: center;
-    width: 50%;
-  }
+  @media screen and (max-width: 580px) {
+    .title {
+      display: flex;
+      flex-direction: column;
+      font-size: 1.875em;
+      margin: auto;
+      margin-top: 24px;
+      margin-bottom: 24px;
+      width: 90%;
+    }
+    .content {
+      font-size: 3vw;
+      display: flex;
+      margin: auto;
+      margin-bottom: 75px;
+      flex-direction: column;
+      justify-content: center;
+      width: 80%;
+    }
+}
+
+  @media screen and (max-width: 780px) {
+    .title {
+      display: flex;
+      flex-direction: column;
+      font-size: 2.875em;
+      margin: auto;
+      margin-top: 24px;
+      margin-bottom: 24px;
+      width: 90%;
+    }
+    .content {
+      font-size: 3vw;
+      display: flex;
+      margin: auto;
+      margin-bottom: 75px;
+      flex-direction: column;
+      justify-content: center;
+      width: 80%;
+    }
+}
+
+  @media screen and (max-width: 1024px) {
+    .title {
+      display: flex;
+      flex-direction: column;
+      font-size: 2.875em;
+      margin: auto;
+      margin-top: 24px;
+      margin-bottom: 24px;
+      width: 85%;
+    }
+    .content {
+      display: flex;
+      margin: auto;
+      margin-bottom: 75px;
+      flex-direction: column;
+      justify-content: center;
+      width: 80%;
+    }
+}
+  @media screen and (min-width: 1025px) {
+    .title {
+      display: flex;
+      flex-direction: column;
+      font-size: 2.875em;
+      margin: auto;
+      margin-top: 24px;
+      margin-bottom: 24px;
+      width: 85%;
+    }
+    .content {
+      display: flex;
+      margin: auto;
+      margin-bottom: 75px;
+      flex-direction: column;
+      justify-content: center;
+      width: 50%;
+    }
+}
 </style>

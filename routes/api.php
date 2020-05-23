@@ -22,15 +22,10 @@ Route::group(['middleware' => 'auth:api'], function () {
     Route::get('/user', function (Request $request) {
         return $request->user();
     });
+});
 
-    Route::get('/test', function () {
-        return response()->success('Laravel api successful.',
-            ['data' => 'Test api response']);
-    });
-
-    Route::middleware('auth:api')->group(function () {
-        Route::get('/logout', 'Api\AuthController@logout')->name('logout');
-    });
+Route::middleware('auth:api')->group(function () {
+    Route::get('logout', 'AuthController@logout')->name('logout');
 });
 
 Route::get('/', 'blogPostController@index');

@@ -2,23 +2,41 @@
 import routeModules from 'features/routes-index.js'
 const routes = [
   {
-    path: '/home',
+    path: '/',
     component: () => import('layouts/default.vue'),
     children: [
+      {
+        path: '/',
+        meta: {
+          needAuth: false
+        },
+        component: () => import('pages/Index.vue')
+      },
+      { path: '/', component: () => import('pages/Index.vue') },
+      // { path: '/timeTraveling', component: () => import('pages/htmm/timeTraveling.vue') },
+      // { path: '/MemeOfTheDay', component: () => import('pages/htmm/memeOfTheDay.vue') },
+      // { path: '/calendar', component: () => import('pages/htmm/calendar.vue') },
+      // { path: '/legendary', component: () => import('pages/htmm/legendary.vue') },
+      { path: '/about', component: () => import('pages/htmm/about.vue') }
+    ]
+  },
+  {
+    path: '/createPost',
+    component: () => import('layouts/default.vue'),
+      children: [
       {
         path: '',
         meta: {
           needAuth: true
         },
-        component: () => import('pages/Index.vue')
+        component: () => import('pages/htmm/createPost.vue')
       },
       { path: '', component: () => import('pages/Index.vue') },
       // { path: '/timeTraveling', component: () => import('pages/htmm/timeTraveling.vue') },
       // { path: '/MemeOfTheDay', component: () => import('pages/htmm/memeOfTheDay.vue') },
       // { path: '/calendar', component: () => import('pages/htmm/calendar.vue') },
       // { path: '/legendary', component: () => import('pages/htmm/legendary.vue') },
-      { path: '/about', component: () => import('pages/htmm/about.vue') },
-      { path: '/createPost', component: () => import('pages/htmm/createPost.vue') }
+      { path: '/about', component: () => import('pages/htmm/about.vue') }
     ]
   },
   // add other routes

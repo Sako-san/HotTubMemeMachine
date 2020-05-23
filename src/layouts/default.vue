@@ -18,16 +18,17 @@
             <q-route-tab to="/MemeOfTheDay" label="Meme of the Day" />
             <q-route-tab to="/calendar" label="Meme Calendar" />
             <q-route-tab to="/legendary" label="Legendary Memes" /> -->
+            <q-route-tab to="/" label="Home" />
             <q-route-tab to="/about" label="About HTMM" />
           </q-tabs>
         </div>
 
-        <div class="flex col-2 justify-center">
+        <!-- <div class="flex col-2 justify-center">
             <span>Doge Count</span>
-        </div>
-        <div>
+        </div> -->
+        <!-- <div>
           <q-btn color="secondary" label="Logout" @click="signOut()" />
-        </div>
+        </div> -->
       </div>
 
     </q-header>
@@ -47,7 +48,7 @@
               <span class="q-mr-xl">Hot Tub Meme Machine - Chronocling the Memes of Our Time</span>
 
               <router-link style="text-decoration:none;" class="q-ma-md fixed-bottom-right" to='/createPost' >
-              <q-btn style="font-family: Roboto;" class="material-icons" icon="create" label="Create Post" flat/>
+              <q-btn v-if="auth" style="font-family: Roboto;" class="material-icons" icon="create" flat/>
               </router-link>
             </div>
       </q-toolbar>
@@ -63,10 +64,15 @@ export default {
       left: true
     }
   },
-  methods: {
-    signOut () {
-      this.$store.dispatch('auth/signOut')
+  computed: {
+    auth () {
+      return this.$store.getters['commons/getField']('isAuth')
     }
+  },
+  methods: {
+    // signOut () {
+    //   this.$store.dispatch('auth/signOut')
+    // }
   }
 }
 </script>

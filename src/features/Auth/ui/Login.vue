@@ -245,7 +245,7 @@ export default {
           //   message: res,
           //   timeout: 1500
           // })
-          this.$router.replace('/home')
+          this.$router.replace('/')
         }).catch(err => {
           console.log(err)
           // this.localNotif()
