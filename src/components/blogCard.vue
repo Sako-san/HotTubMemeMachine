@@ -80,7 +80,6 @@
 
 <script>
 import EditPost from '../pages/htmm/createPost'
-import { axios } from 'boot/axios'
 
 export default {
   components: { EditPost },
@@ -103,7 +102,8 @@ export default {
   },
   methods: {
     async deletePost () {
-      await axios.delete('/blogPosts/' + this.blogPost.id)
+      const data = this.blogPost.id
+      this.$store.dispatch('apcStore/deleteBlogPost', data)
 
       this.$q.notify({
         message: 'Post Deleted',

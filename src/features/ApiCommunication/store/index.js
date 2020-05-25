@@ -1,10 +1,9 @@
+import * as actions from './actions.js'
 import { getField, updateField } from 'assets/utils/vuex-utils'
 // import { routerInstance } from 'boot/router'
 // a function returning the state objects useful for reinitialization
 const apcStates = () => ({
-  apiResponse: null,
-  apiErrorResponse: null,
-  requestedBy: null
+  blogPosts: null
 })
 
 const state = {
@@ -23,8 +22,6 @@ const getters = {
 const mutations = {
   updateField
 }
-
-const actions = {}
 
 export default {
   namespaced: true,

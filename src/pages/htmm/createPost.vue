@@ -213,6 +213,11 @@ export default {
 
       if (this.blogPost.id) {
         await axios.put('/blogPosts/' + this.blogPost.id, data)
+
+        this.$q.notify({
+          message: 'Post Updated',
+          color: 'Positive'
+        })
       } else {
         await axios.post('/blogPosts', data)
       }

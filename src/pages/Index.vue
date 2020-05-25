@@ -21,13 +21,18 @@ export default {
   name: 'PageIndex',
   data () {
     return {
-      posts: null
+      loading: false
+    }
+  },
+  computed: {
+    posts () {
+      return this.$store.getters['apcStore/getField']('blogPosts')
     }
   },
   async mounted () {
-    const { data } = await this.$axios.get('/')
-    console.log(data)
-    this.posts = data.reverse()
+    this.loading = true
+    await this.$store.dispatch('apcStore/loadBlogData')
+    this.loading = false
   }
 }
 </script>
