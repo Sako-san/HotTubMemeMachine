@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\blogPost;
+use App\BlogPost;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class blogPostController extends Controller
+class BlogPostController extends Controller
 {
     use SoftDeletes;
     /**
