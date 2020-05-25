@@ -28,7 +28,7 @@ Route::middleware('auth:api')->group(function () {
     Route::get('logout', 'AuthController@logout')->name('logout');
 });
 
-Route::get('/', 'blogPostController@index');
+Route::get('/', 'BlogPostController@index');
 Route::resource('blogPosts', 'blogPostController');
 
 Route::post('login', 'AuthController@login');
