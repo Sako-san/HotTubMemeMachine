@@ -88,7 +88,7 @@ class blogPostController extends Controller
     public function update(Request $request, blogPost $blogPost)
     {
         //
-        $bp = blogPost::findOrFail($blogPost);
+        $bp = blogPost::findOrFail($blogPost->id);
         $bp->update($request->all());
 
         return $bp;
@@ -103,7 +103,7 @@ class blogPostController extends Controller
     public function destroy(Request $request, blogPost $blogPost)
     {
         //
-        $bp = blogPost::findOrFail($blogPost);
+        $bp = blogPost::findOrFail($blogPost->id);
         $bp->delete();
 
         return 204;

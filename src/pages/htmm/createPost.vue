@@ -1,6 +1,6 @@
 <template>
-  <q-page>
-  <h4 class="title">Create Post</h4>
+  <q-page style="color: black">
+  <h2 class="title">Create Post</h2>
 
   <div class="content-container">
 
@@ -134,6 +134,7 @@
 
       <div class="flex row justify-center">
           <q-btn
+            class="q-mb-xl"
             type="submit"
             label="Save"
             style="height: 50px; width:150px"
@@ -152,6 +153,12 @@ import { axios } from 'boot/axios'
 
 export default {
   name: 'CreatePost',
+  props: {
+    blogPost: {
+      type: Object,
+      required: true
+    }
+  },
   data () {
     return {
       definitions: {
@@ -161,12 +168,11 @@ export default {
           handler: this.insertImg // handler will call insertImg() method
           }
       },
-      date: '',
-      memeName: '',
-      // imageData: null,
-      // picture: null,
-      blogText: '',
-      dogeRating: 0
+      id: this.blogPost.id || '',
+      date: this.blogPost.DateOfBirth || '',
+      memeName: this.blogPost.Title || '',
+      blogText: this.blogPost.BlogContent || '',
+      dogeRating: this.blogPost.DogeRating || 0
     }
   },
   computed: {
@@ -196,27 +202,29 @@ export default {
             }
             input.click()
         },
-    async createPost () {
+    async savePost () {
       const data = {
+        id: this.id,
         DateOfBirth: this.date,
         Title: this.memeName,
         BlogContent: this.blogText,
         DogeRating: this.dogeRating
       }
 
-      await axios.post('/blogPosts', data)
-    },
-    uploadFile () {
-
+      if (this.blogPost.id) {
+        await axios.put('/blogPosts/' + this.blogPost.id, data)
+      } else {
+        await axios.post('/blogPosts', data)
+      }
     },
     onSubmit (evt) {
       evt.preventDefault()
-      this.uploadFile()
-      this.createPost()
+      this.savePost()
       this.onReset()
     },
     onReset () {
       // Reset our form values
+      this.id = ''
       this.date = ''
       this.memeName = ''
       this.dogeRating = 0
@@ -229,6 +237,7 @@ export default {
 <style lang="stylus">
 @media screen and (max-width: 580px) {
   .title {
+   margin-top: 48px;
    display: flex;
    justify-content: center;
    margin-bottom: 24px;
@@ -265,6 +274,7 @@ export default {
 
 @media screen and (max-width: 780px) {
   .title {
+   margin-top: 48px;
    display: flex;
    justify-content: center;
    margin-bottom: 24px;
@@ -301,6 +311,8 @@ export default {
 
 @media screen and (max-width: 1024px) {
   .title {
+   margin-top: 48px;
+   height: auto;
    display: flex;
    justify-content: center;
    margin-bottom: 24px;
@@ -337,6 +349,7 @@ export default {
 
 @media screen and (min-width: 1025px) {
   .title {
+   margin-top: 48px;
    display: flex;
    justify-content: center;
    margin-bottom: 24px;

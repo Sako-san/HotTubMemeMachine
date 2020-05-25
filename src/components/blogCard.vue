@@ -1,6 +1,31 @@
 <template>
-  <q-card class="card">
+<div>
+    <q-card class="card bg-primary">
     <div class="column">
+      <div v-if="auth" class="row justify-end">
+        <q-btn-dropdown
+          size="1vw"
+          align
+          class="q-ma-md"
+          dropdown-icon="mdi-dots-horizontal"
+          flat>
+          <q-list>
+
+            <q-item clickable v-close-popup @click="dialog=true">
+              <q-item-section>
+                <q-item-label>Edit Post</q-item-label>
+              </q-item-section>
+            </q-item>
+
+            <q-item clickable v-close-popup @click="deletePost">
+              <q-item-section>
+                <q-item-label>Delete Post</q-item-label>
+              </q-item-section>
+            </q-item>
+
+          </q-list>
+        </q-btn-dropdown>
+      </div>
       <div class="text-center">
         <div class="title">{{ blogPost.Title }}</div>
         <div class="bday">Birth Day: {{ blogPost.DateOfBirth }}</div>
@@ -22,14 +47,68 @@
       </div>
     </div>
   </q-card>
+
+  <q-dialog
+      v-if="auth"
+      v-model="dialog"
+      persistent
+      :maximized="maximizedToggle"
+      transition-show="slide-up"
+      transition-hide="slide-down">
+      <q-card class="bg-primary text-white">
+        <q-bar>
+          <q-space />
+
+          <q-btn dense flat icon="minimize" @click="maximizedToggle = false" :disable="!maximizedToggle">
+            <q-tooltip v-if="maximizedToggle" content-class="bg-primary">Minimize</q-tooltip>
+          </q-btn>
+          <q-btn dense flat icon="crop_square" @click="maximizedToggle = true" :disable="maximizedToggle">
+            <q-tooltip v-if="!maximizedToggle" content-class="bg-primary">Maximize</q-tooltip>
+          </q-btn>
+          <q-btn dense flat icon="close" v-close-popup>
+            <q-tooltip content-class="bg-primary">Close</q-tooltip>
+          </q-btn>
+        </q-bar>
+
+          <EditPost
+          :blog-post="blogPost"
+          class="q-mt-xl" />
+      </q-card>
+    </q-dialog>
+</div>
 </template>
 
 <script>
+import EditPost from '../pages/htmm/createPost'
+import { axios } from 'boot/axios'
+
 export default {
+  components: { EditPost },
   props: {
     blogPost: {
       type: Object,
       required: true
+    }
+  },
+  data () {
+    return {
+      dialog: false,
+      maximizedToggle: true
+    }
+  },
+  computed: {
+     auth () {
+      return this.$store.getters['commons/getField']('isAuth')
+    }
+  },
+  methods: {
+    async deletePost () {
+      await axios.delete('/blogPosts/' + this.blogPost.id)
+
+      this.$q.notify({
+        message: 'Post Deleted',
+        color: 'Negative'
+      })
     }
   }
 }
@@ -54,7 +133,6 @@ export default {
     font-size: 4vw;
     font-weight: bold;
     margin: 0 auto;
-    margin-top: 12px;
     width: 100%;
   }
 
@@ -94,7 +172,6 @@ export default {
     font-size: 8vw;
     font-weight: bold;
     margin: 0 auto;
-    margin-top: 12px;
     width: 100%;
   }
 
@@ -142,7 +219,6 @@ export default {
     font-size: 8vw;
     font-weight: bold;
     margin: 0 auto;
-    margin-top: 12px;
     width: 100%;
   }
 
