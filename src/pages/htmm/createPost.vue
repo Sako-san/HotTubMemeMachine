@@ -149,14 +149,13 @@
 
 <script>
 import { mapState } from 'vuex'
-import { axios } from 'boot/axios'
 
 export default {
   name: 'CreatePost',
   props: {
     blogPost: {
       type: Object,
-      required: true
+      required: false
     }
   },
   data () {
@@ -168,11 +167,11 @@ export default {
           handler: this.insertImg // handler will call insertImg() method
           }
       },
-      id: this.blogPost.id || '',
-      date: this.blogPost.DateOfBirth || '',
-      memeName: this.blogPost.Title || '',
-      blogText: this.blogPost.BlogContent || '',
-      dogeRating: this.blogPost.DogeRating || 0
+      id: this.blogPost ? this.blogPost.id : null,
+      date: this.blogPost ? this.blogPost.DateOfBirth : '',
+      memeName: this.blogPost ? this.blogPost.Title : '',
+      blogText: this.blogPost ? this.blogPost.BlogContent : '',
+      dogeRating: this.blogPost ? this.blogPost.DogeRating : 0
     }
   },
   computed: {
@@ -204,22 +203,22 @@ export default {
         },
     async savePost () {
       const data = {
-        id: this.id,
+        id: this.id ? this.blogPost.id : null,
         DateOfBirth: this.date,
         Title: this.memeName,
         BlogContent: this.blogText,
         DogeRating: this.dogeRating
       }
 
-      if (this.blogPost.id) {
-        await axios.put('/blogPosts/' + this.blogPost.id, data)
+      if (this.id === null) {
+        await this.$store.dispatch('apcStore/createBlogPost', data)
+      } else {
+        await this.$store.dispatch('apcStore/updateBlogPost', data)
 
         this.$q.notify({
           message: 'Post Updated',
           color: 'Positive'
         })
-      } else {
-        await axios.post('/blogPosts', data)
       }
     },
     onSubmit (evt) {
@@ -229,7 +228,7 @@ export default {
     },
     onReset () {
       // Reset our form values
-      this.id = ''
+      this.id = null
       this.date = ''
       this.memeName = ''
       this.dogeRating = 0

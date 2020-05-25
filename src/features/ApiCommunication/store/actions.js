@@ -11,13 +11,27 @@ export const loadBlogData = async ({ commit, dispatch, getters }, payload) => {
   }
 }
 
+export const createBlogPost = async ({ commit, dispatch, getters, state }, payload) => {
+  try {
+    state.blogPosts.unshift(payload)
+    console.log(payload)
+    commit('updateField', { path: 'blogPosts', value: state.blogPosts })
+    axios.post('/blogPosts', payload).then(res => {
+      console.log(res)
+    })
+  } catch (e) {
+    process.env.DEV && log(e)
+  }
+}
+
 export const updateBlogPost = async ({ commit, dispatch, getters, state }, payload) => {
   try {
     const idx = state.blogPosts.findIndex(({ id }) => id === payload.id)
     state.blogPosts.splice(idx, 1, payload)
+    console.log(state.blogPosts)
     commit('updateField', { path: 'blogPosts', value: state.blogPosts })
-    axios.delete('/blogPosts/' + payload).then((res) => {
-      console.log(res)
+    axios.put('/blogPosts/' + payload.id, payload).then((res) => {
+      console.log(res.data)
     })
   } catch (e) {
      process.env.DEV && log(e)
