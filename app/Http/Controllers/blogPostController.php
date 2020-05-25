@@ -18,7 +18,7 @@ class BlogPostController extends Controller
     public function index()
     {
         // gets all blogPosts
-        return blogPost::all();
+        return BlogPost::all();
     }
 
     /**
@@ -29,7 +29,7 @@ class BlogPostController extends Controller
     public function create(Request $request)
     {
         // creates new blogPost
-        return blogPost::create($request->all());
+        return BlogPost::create($request->all());
     }
 
     /**
@@ -42,7 +42,7 @@ class BlogPostController extends Controller
     {
         // $path = $request->file('imgUrl')->store('imgFile', 's3');
         
-        $post = blogPost::create([
+        $post = BlogPost::create([
             'Title' => $request->Title,
             'DateOfBirth' => $request->DateOfBirth,
             'DogeRating' => $request->DogeRating,
@@ -56,25 +56,25 @@ class BlogPostController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\blogPost  $blogPost
+     * @param  \App\BlogPost  $blogPost
      * @return \Illuminate\Http\Response
      */
     public function show(blogPost $blogPost)
     {
         // shows single post
-        return blogPost::findOrFail($blogPost);
+        return BlogPost::findOrFail($blogPost);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\blogPost  $blogPost
+     * @param  \App\BlogPost  $blogPost
      * @return \Illuminate\Http\Response
      */
-    public function edit(Request $request, blogPost $blogPost)
+    public function edit(Request $request, BlogPost $blogPost)
     {
         //
-        $bp = blogPost::findOrFail($blogPost);
+        $bp = BlogPost::findOrFail($blogPost);
         $bp->update($request->all());
     }
 
@@ -82,13 +82,13 @@ class BlogPostController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\blogPost  $blogPost
+     * @param  \App\BlogPost  $blogPost
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, blogPost $blogPost)
+    public function update(Request $request, BlogPost $blogPost)
     {
         //
-        $bp = blogPost::findOrFail($blogPost->id);
+        $bp = BlogPost::findOrFail($blogPost->id);
         $bp->update($request->all());
 
         return $bp;
@@ -97,13 +97,13 @@ class BlogPostController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\blogPost  $blogPost
+     * @param  \App\BlogPost  $blogPost
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, blogPost $blogPost)
+    public function destroy(Request $request, BlogPost $blogPost)
     {
         //
-        $bp = blogPost::findOrFail($blogPost->id);
+        $bp = BlogPost::findOrFail($blogPost->id);
         $bp->delete();
 
         return 204;
