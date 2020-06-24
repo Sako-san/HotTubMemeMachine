@@ -25,13 +25,53 @@
 </template>
 
 <script>
+import { eachDayOfInterval, startOfMonth, lastDayOfMonth, addMonths, subMonths, getDay, getWeekOfMonth, getDate } from 'date-fns'
+
 export default {
   name: 'Calendar',
   data () {
     return {
       weeks: [1, 2, 3, 4, 5],
-      days: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']
+      days: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+      targetDate: null
     }
+  },
+  computed: {
+    targetMonth () {
+      let month = eachDayOfInterval({ start: startOfMonth(this.targetDate), end: lastDayOfMonth(this.targetDate) })
+       return month.map(day => {
+         return {
+           numDay: getDay(day),
+           weekofMon: getWeekOfMonth(day),
+           dayOfMon: getDate(day)
+         }
+       })
+    },
+    lastMonth () {
+      let targetDateSubMon = subMonths(this.targetDate, 1)
+      let month = eachDayOfInterval({ start: startOfMonth(targetDateSubMon), end: lastDayOfMonth(targetDateSubMon) })
+       return month.map(day => {
+         return {
+           numDay: getDay(day),
+           weekofMon: getWeekOfMonth(day),
+           dayOfMon: getDate(day)
+         }
+       })
+    },
+    nextMonth () {
+      let targetDateAddMon = addMonths(this.targetDate, 1)
+      let month = eachDayOfInterval({ start: startOfMonth(targetDateAddMon), end: lastDayOfMonth(targetDateAddMon) })
+       return month.map(day => {
+         return {
+           numDay: getDay(day),
+           weekofMon: getWeekOfMonth(day),
+           dayOfMon: getDate(day)
+         }
+       })
+    }
+  },
+  mounted () {
+    this.targetDate = new Date()
   }
 }
 </script>
