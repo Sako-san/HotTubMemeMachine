@@ -38,29 +38,18 @@ export default {
   },
   computed: {
     targetMonth () {
-      let month = eachDayOfInterval({ start: startOfMonth(this.targetDate), end: lastDayOfMonth(this.targetDate) })
-       return month.map(day => {
-         return {
-           numDay: getDay(day),
-           weekofMon: getWeekOfMonth(day),
-           dayOfMon: getDate(day)
-         }
-       })
+      return this.mapMonth(this.targetDate)
     },
     lastMonth () {
-      let targetDateSubMon = subMonths(this.targetDate, 1)
-      let month = eachDayOfInterval({ start: startOfMonth(targetDateSubMon), end: lastDayOfMonth(targetDateSubMon) })
-       return month.map(day => {
-         return {
-           numDay: getDay(day),
-           weekofMon: getWeekOfMonth(day),
-           dayOfMon: getDate(day)
-         }
-       })
+      return this.mapMonth(subMonths(this.targetDate, 1))
     },
     nextMonth () {
-      let targetDateAddMon = addMonths(this.targetDate, 1)
-      let month = eachDayOfInterval({ start: startOfMonth(targetDateAddMon), end: lastDayOfMonth(targetDateAddMon) })
+      return this.mapMonth(addMonths(this.targetDate, 1))
+    }
+  },
+  methods: {
+    mapMonth (date) {
+      let month = eachDayOfInterval({ start: startOfMonth(date), end: lastDayOfMonth(date) })
        return month.map(day => {
          return {
            numDay: getDay(day),
