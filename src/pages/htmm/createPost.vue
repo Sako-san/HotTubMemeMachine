@@ -33,7 +33,7 @@
               <q-rating
                 v-model="dogeRating"
                 size="3.5em"
-                icon="img:statics/icons/doge_icon.png"/>
+                icon="img:statics/icons/dogicon.jpg"/>
             </div>
           </div>
       </div>

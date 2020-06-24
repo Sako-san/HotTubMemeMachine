@@ -14,10 +14,10 @@
 
         <div class="flex col-6 justify-between">
           <q-tabs>
-            <!-- <q-route-tab to="/timeTraveling" label="Memes of Past" />
-            <q-route-tab to="/MemeOfTheDay" label="Meme of the Day" />
-            <q-route-tab to="/calendar" label="Meme Calendar" />
-            <q-route-tab to="/legendary" label="Legendary Memes" /> -->
+            <!-- <q-route-tab to="/timeTraveling" label="Memes of Past" /> -->
+            <!-- <q-route-tab to="/MemeOfTheDay" label="Meme of the Day" /> -->
+            <q-route-tab to="/calendar" label="Calendar" />
+            <!-- <q-route-tab to="/legendary" label="Legendary Memes" /> -->
             <q-route-tab to="/" label="Home" />
             <q-route-tab to="/about" label="About HTMM" />
           </q-tabs>
@@ -41,7 +41,7 @@
       <q-toolbar class="q-m-lg bg-primary text-secondary">
             <a href="https://www.google.com/search?q=origin+of+doge" target="_blank">
               <q-avatar style="height:75px; width:100px;">
-                <img src="../assets/doge_icon.png">
+                <img src='../assets/dogicon.jpg'>
               </q-avatar>
             </a>
             <div class="row">
