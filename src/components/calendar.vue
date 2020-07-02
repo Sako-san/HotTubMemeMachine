@@ -11,7 +11,7 @@
         v-for="(week, widx) in weeks"
         :key="widx">
           <div
-            class="tile q-ma-xs q-pa-xl col items-center"
+            class="tile q-pa-xl col items-center"
             style="outline: 1px solid black;"
             v-for="(day, didx) in days"
             :key="didx">
@@ -19,14 +19,8 @@
                   {{ day }}
                 </div>
                 <div class="edit">
-                  <q-btn
-                    flat>
-                    <q-icon size="18px" class="material-icon" name="create" />
-                  </q-btn>
-                  <q-btn
-                    flat>
-                    <q-icon size="18px" class="material-icon" name="add" />
-                  </q-btn>
+                  <q-btn size="12px" icon="create" flat/>
+                  <q-btn size="12px" icon="add" flat/>
                 </div>
           </div>
       </div>
@@ -82,8 +76,8 @@ export default {
       display: none;
     }
     .edit {
+      max-height: 117px;
       display: flex;
-      flex-direction: row;
       justify-content: center;
     }
   }
@@ -91,6 +85,11 @@ export default {
   .tile {
     .edit {
       display: none;
+    }
+    .day {
+      max-height: 117px;
+      display: flex;
+      justify-content: center;
     }
   }
 

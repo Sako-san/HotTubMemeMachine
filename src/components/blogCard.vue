@@ -42,7 +42,7 @@
           v-model="blogPost.DogeRating"
           disable
           size="3.5em"
-          icon="img:statics/icons/dogicon.jpg">
+          icon="img:statics/icons/doge-icon2.png">
       </q-rating>
       </div>
     </div>

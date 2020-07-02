@@ -38,14 +38,14 @@
     </q-page-container>
 
     <q-footer class="bg-grey-8 text-white">
-      <q-toolbar class="q-m-lg bg-primary text-secondary">
+      <q-toolbar class="bg-primary text-secondary">
             <a href="https://www.google.com/search?q=origin+of+doge" target="_blank">
-              <q-avatar style="height:75px; width:100px;">
-                <img src='../assets/dogicon.png'>
+              <q-avatar style="height:100px; width:100px;">
+                <img src='../assets/doge-icon2.png'>
               </q-avatar>
             </a>
             <div class="row">
-              <span class="q-mr-xl">Hot Tub Meme Machine - Chronocling the Memes of Our Time</span>
+              <span class="q-ml-lg">Hot Tub Meme Machine - Chronocling the Memes of Our Time</span>
 
               <router-link style="text-decoration:none;" class="q-ma-md fixed-bottom-right" to='/createPost' >
               <q-btn v-if="auth" style="font-family: Roboto;" class="material-icons" icon="create" flat/>
