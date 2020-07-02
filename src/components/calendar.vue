@@ -11,13 +11,23 @@
         v-for="(week, widx) in weeks"
         :key="widx">
           <div
-            class="q-ma-xs q-pa-xl col"
+            class="tile q-ma-xs q-pa-xl col items-center"
             style="outline: 1px solid black;"
             v-for="(day, didx) in days"
             :key="didx">
-              <div>
-                {{ day }}
-              </div>
+                <div class="day">
+                  {{ day }}
+                </div>
+                <div class="edit">
+                  <q-btn
+                    flat>
+                    <q-icon size="18px" class="material-icon" name="create" />
+                  </q-btn>
+                  <q-btn
+                    flat>
+                    <q-icon size="18px" class="material-icon" name="add" />
+                  </q-btn>
+                </div>
           </div>
       </div>
       </div>
@@ -64,3 +74,24 @@ export default {
   }
 }
 </script>
+
+<style lang="stylus">
+  .tile:hover {
+    background-color: lightgreen;
+    .day {
+      display: none;
+    }
+    .edit {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+    }
+  }
+
+  .tile {
+    .edit {
+      display: none;
+    }
+  }
+
+</style>
