@@ -3,17 +3,28 @@
     class="flex column items-center justify-center"
     height="100vh"
     width="100vw">
+    <div class="flex q-mb-md">
+      <q-btn
+      flat
+      icon="keyboard_arrow_left"
+      @click="backMonth"/>
+      <h4 v-if="targetDate">{{ targetName }}</h4>
+      <q-btn
+      flat
+      icon="keyboard_arrow_right"
+      @click="forwardMonth"/>
+    </div>
   <div class="flex column items-center"
     style="width: 100vw">
       <div
         class="row text-center"
         style="width: 90vw"
-        v-for="(week, widx) in weeks"
+        v-for="(week, widx) in calendarFill"
         :key="widx">
           <div
             class="tile q-pa-xl col items-center"
             style="outline: 1px solid black;"
-            v-for="(day, didx) in days"
+            v-for="(day, didx) in week"
             :key="didx">
                 <div class="day">
                   {{ day }}
@@ -29,20 +40,30 @@
 </template>
 
 <script>
-import { eachDayOfInterval, startOfMonth, lastDayOfMonth, addMonths, subMonths, getDay, getWeekOfMonth, getDate } from 'date-fns'
+import { format, eachDayOfInterval, startOfMonth, lastDayOfMonth, addMonths, subMonths, getDay, getWeekOfMonth, getDate } from 'date-fns'
 
 export default {
   name: 'Calendar',
   data () {
     return {
-      weeks: [1, 2, 3, 4, 5],
+      weeks: [[], [], [], [], []],
       days: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
       targetDate: null
     }
   },
   computed: {
+    targetName () {
+      return format(this.targetDate, 'MMMM')
+    },
     targetMonth () {
       return this.mapMonth(this.targetDate)
+    },
+    calendarFill () {
+        let weeks = [ [], [], [], [], [], [] ]
+        this.targetMonth.map(day => {
+        weeks[(day.weekofMon - 1)].push(day)
+        })
+        return weeks
     },
     lastMonth () {
       return this.mapMonth(subMonths(this.targetDate, 1))
@@ -61,6 +82,12 @@ export default {
            dayOfMon: getDate(day)
          }
        })
+    },
+    backMonth () {
+      this.targetDate = subMonths(this.targetDate, 1)
+    },
+    forwardMonth () {
+      this.targetDate = addMonths(this.targetDate, 1)
     }
   },
   mounted () {
