@@ -3,7 +3,7 @@
 
     <q-header  class="flex bg-white text-secondary q-py-xs" style="border-bottom: 5px solid black;" height-hint="98">
 
-      <div class="row justify-around items-center q-ml-md" style="width:100%;">
+      <div class="row justify-center items-center q-ml-md" style="width:100%;">
         <div class="flex col-3 justify-center">
             <q-toolbar-title class="rounded-borders">
               <router-link to="/">
@@ -16,7 +16,7 @@
           <q-tabs>
             <!-- <q-route-tab to="/timeTraveling" label="Memes of Past" /> -->
             <!-- <q-route-tab to="/MemeOfTheDay" label="Meme of the Day" /> -->
-            <q-route-tab to="/calendar" label="Meme Calendar" />
+            <!-- <q-route-tab to="/calendar" label="Meme Calendar" /> -->
             <!-- <q-route-tab to="/legendary" label="Legendary Memes" /> -->
             <q-route-tab to="/" label="Home" />
             <q-route-tab to="/about" label="About HTMM" />
