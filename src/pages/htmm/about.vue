@@ -1,5 +1,5 @@
 <template>
-  <q-page class="flex-center text-black">
+  <q-page class="doge flex-center text-black">
     <div class="column text-center" width="100%">
       <div class='title'>
         <div>Hot Tub</div>
@@ -56,6 +56,11 @@ export default {
 }
 </script>
 <style lang="stylus">
+  .doge {
+    height: 100%;
+    background-image: url("../../assets/doge-icon2-O25.png");
+    background-attachment: fixed;
+  }
   @media screen and (max-width: 580px) {
     .title {
       display: flex;
