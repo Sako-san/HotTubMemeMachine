@@ -1,7 +1,7 @@
 <template>
   <q-layout view="hHh lpR fFf">
 
-    <q-header  class="flex bg-primary text-secondary q-py-md" height-hint="98">
+    <q-header  class="flex bg-white text-secondary q-py-xs" style="border-bottom: 5px solid black;" height-hint="98">
 
       <div class="row justify-around items-center q-ml-md" style="width:100%;">
         <div class="flex col-3 justify-center">
@@ -12,7 +12,7 @@
             </q-toolbar-title>
         </div>
 
-        <div class="flex col-6 justify-between">
+        <div class="flex col-6 justify-center">
           <q-tabs>
             <!-- <q-route-tab to="/timeTraveling" label="Memes of Past" /> -->
             <!-- <q-route-tab to="/MemeOfTheDay" label="Meme of the Day" /> -->
@@ -23,9 +23,8 @@
           </q-tabs>
         </div>
 
-        <!-- <div class="flex col-2 justify-center">
-            <span>Doge Count</span>
-        </div> -->
+        <div class="flex col-3 justify-center">
+        </div>
         <!-- <div>
           <q-btn color="secondary" label="Logout" @click="signOut()" />
         </div> -->
@@ -37,12 +36,10 @@
       <router-view />
     </q-page-container>
 
-    <q-footer class="bg-grey-8 text-white">
-      <q-toolbar class="bg-primary text-secondary">
+    <q-footer class="bg-grey-8 text-white" style="height: 50px;">
+      <q-toolbar class="flex justify-center bg-primary text-secondary">
             <a href="https://www.google.com/search?q=origin+of+doge" target="_blank">
-              <q-avatar style="height:100px; width:100px;">
-                <img src='../assets/doge-icon2.png'>
-              </q-avatar>
+                <img class="q-ma-sm" style="height: 35px; width: 90px; border-radius: 3px;" src='../assets/doge-boi.png'>
             </a>
             <div class="row">
               <span class="q-ml-lg">Hot Tub Meme Machine - Chronocling the Memes of Our Time</span>
