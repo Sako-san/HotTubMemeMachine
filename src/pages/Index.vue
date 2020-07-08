@@ -39,7 +39,7 @@ export default {
 <style>
   .doge {
     height: 100%;
-    background-image: url("../assets/doge_50_opacity.png");
+    background-image: url("../assets/doge-icon2-O25.png");
     background-attachment: fixed;
   }
 </style>
