@@ -1,6 +1,6 @@
 <template>
-  <q-page class="doge flex-center text-black">
-    <div class="column text-center" width="100%">
+  <q-page class="doge flex flex-center column text-black">
+    <div class="text-center" style="width: 100%;">
       <div class='title'>
         <div>Hot Tub</div>
         <div>Meme Machine</div>
